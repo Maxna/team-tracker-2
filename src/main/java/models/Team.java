@@ -42,4 +42,8 @@ public class Team {
     public static Team findById(int id) {
         return teamList.get(id-1);
     }
+
+    public void updateTeam(String teamName) {
+        this.teamName = teamName;
+    }
 }

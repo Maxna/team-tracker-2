@@ -50,4 +50,20 @@ public class TeamTest {
         assertEquals(1, Team.findById(testTeam.getId()).getId());
         assertEquals(2, Team.findById(team.getId()).getId());
     }
+
+    @Test
+    public void updateTeam_CorrectlyChangesTeamProps() throws Exception {
+        Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
+        String oldTeamName = testTeam.getTeamName();
+        String oldDescription = testTeam.getDescription();
+        String oldMember = testTeam.getMember();
+        int oldId = testTeam.getId();
+
+        testTeam.updateTeam("Green");
+
+        assertEquals(oldId, testTeam.getId());
+        assertEquals(oldDescription, testTeam.getDescription());
+        assertEquals(oldMember, testTeam.getMember());
+        assertNotEquals(oldTeamName, testTeam.getTeamName());
+    }
 }
