@@ -38,4 +38,8 @@ public class Team {
     public static ArrayList<Team> getAll() {
         return teamList;
     }
+
+    public static Team findById(int id) {
+        return teamList.get(id-1);
+    }
 }
