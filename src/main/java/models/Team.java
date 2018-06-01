@@ -25,15 +25,15 @@ public class Team {
         return description;
     }
 
-//    public String getMember() {
-//        return member;
-//    }
-//
+    public String getMember() {
+        return member;
+    }
+
 //    public int getId() {
 //        return id;
 //    }
-//
-//    public static ArrayList<Team> getTeamList() {
+
+//    public static ArrayList<Team> getAll() {
 //        return teamList;
 //    }
 }

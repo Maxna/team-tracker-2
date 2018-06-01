@@ -22,4 +22,16 @@ public class TeamTest {
         Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
         assertEquals("They sure aren't Red", testTeam.getDescription());
     }
+
+    @Test
+    public void getMember_CorrectlyGetsMember() throws Exception {
+        Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
+        assertEquals("Jon Jonson", testTeam.getMember());
+    }
+
+//    @Test
+//    public void getId_CorrectlyGetsId() throws Exception {
+//        Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
+//        assertEquals(1, testTeam.getId());
+//    }
 }
