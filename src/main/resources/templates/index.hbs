@@ -3,9 +3,9 @@
     <h2>Team List!</h2>
 
     {{#if teams}}
-        {{#each team}}
+        {{#each teams}}
             <p>Current Team:</p>
-            <p>{{ teamName }} <a href="/jobs/{{id}}">Team Information</a></p>
+            <p>{{ teamName }} <a href="/teams/{{id}}">Team Information</a></p>
         {{/each}}
     {{else}}
         <p>Sorry, team not found!</p>
