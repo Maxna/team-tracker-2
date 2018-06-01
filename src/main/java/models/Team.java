@@ -35,7 +35,7 @@ public class Team {
         return id;
     }
 
-//    public static ArrayList<Team> getAll() {
-//        return teamList;
-//    }
+    public static ArrayList<Team> getAll() {
+        return teamList;
+    }
 }

@@ -34,4 +34,12 @@ public class TeamTest {
         Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
         assertEquals(1, testTeam.getId());
     }
+
+    @Test
+    public void getAll_CorrectlyGetsAllTeams() throws Exception {
+        Team testTeam = new Team("Blue", "They sure aren't Red", "Jon Jonson");
+        Team team = new Team("Red", "They sure aren't Blue", "Don Donson");
+        assertTrue(Team.getAll().contains(testTeam));
+        assertTrue(Team.getAll().contains(team));
+    }
 }
