@@ -21,10 +21,10 @@ public class Team {
         return teamName;
     }
 
-//    public String getDescription() {
-//        return description;
-//    }
-//
+    public String getDescription() {
+        return description;
+    }
+
 //    public String getMember() {
 //        return member;
 //    }
