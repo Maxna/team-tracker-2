@@ -14,6 +14,8 @@ public class Team {
         this.teamName = teamName;
         this.description = description;
         this.member = member;
+        teamList.add(this);
+        this.id = teamList.size();
 
     }
 
@@ -29,9 +31,9 @@ public class Team {
         return member;
     }
 
-//    public int getId() {
-//        return id;
-//    }
+    public int getId() {
+        return id;
+    }
 
 //    public static ArrayList<Team> getAll() {
 //        return teamList;
