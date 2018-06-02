@@ -1,14 +1,13 @@
 {{#partial "content"}}
 
-    <h2>Team List!</h2>
+    <h2>Teams List!</h2>
 
     {{#if teams}}
         {{#each teams}}
-            <p>Current Team:</p>
-            <p>{{ teamName }} ---- <a href="/teams/{{id}}">Team Information</a></p>
+            <p><b>Team</b> {{ teamName }} ---- <a href="/teams/{{id}}">Team Details</a></p>
         {{/each}}
     {{else}}
-        <p>Sorry, team not found!</p>
+        <p>No teams listed.</p>
     {{/if}}
 
 {{/partial}}
