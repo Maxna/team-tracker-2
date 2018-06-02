@@ -59,11 +59,9 @@ public class App {
         post("/teams/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String newTeamName = req.queryParams("teamName");
-            String addMember = req.queryParams("member");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             Team editTeam = Team.findById(idOfTeamToEdit);
             editTeam.updateTeam(newTeamName);
-            editTeam.updateTeam(addMember);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

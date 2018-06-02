@@ -7,15 +7,18 @@ public class Team {
     private String teamName;
     private String description;
     private String member;
+    private ArrayList<String> memberList = new ArrayList<>();
     private int id;
     private static ArrayList<Team> teamList = new ArrayList<>();
 
-    public Team(String teamName, String description, String member) {
+    public Team(String teamName, String description, ArrayList memberList) {
         this.teamName = teamName;
         this.description = description;
         this.member = member;
         teamList.add(this);
         this.id = teamList.size();
+        memberList.add(this);
+        this.id = memberList.size();
 
     }
 
@@ -37,6 +40,10 @@ public class Team {
 
     public static ArrayList<Team> getAll() {
         return teamList;
+    }
+
+    public ArrayList<String> getMembers() {
+        return memberList;
     }
 
     public static Team findById(int id) {
