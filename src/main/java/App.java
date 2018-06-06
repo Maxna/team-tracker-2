@@ -25,7 +25,7 @@ public class App {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Team> teams = Team.getAll();
+            ArrayList<Team> teams = Team.getTeams();
             model.put("teams", teams);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
@@ -35,7 +35,7 @@ public class App {
             String teamName = req.queryParams("teamName");
             String description = req.queryParams("description");
             String member = req.queryParams("member");
-            Team newTeam = new Team(teamName, description, member);
+            Team newTeam = new Team(teamName, description);
             model.put("team", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
