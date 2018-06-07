@@ -1,15 +1,30 @@
 package models;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TeamTest {
 
+    @Before
+    public void setUp() throws Exception {
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        Team.clearAllTeams();
+    }
+
     @Test
     public void Team_InstantiatesNewInstanceCorrectly_true() throws Exception {
         Team testTeam = new Team("Blue", "They sure aren't Red");
-        assertEquals(true, testTeam instanceof Team);
+        assertTrue(testTeam instanceof Team);
     }
 
     @Test
@@ -24,11 +39,21 @@ public class TeamTest {
         assertEquals("They sure aren't Red", testTeam.getDescription());
     }
 
-//    @Test
-//    public void getMember_CorrectlyGetsMember() throws Exception {
-//        Team testTeam = new Team("Blue", "They sure aren't Red");
-//        assertEquals("Jon Jonson", testTeam.getMember());
-//    }
+    @Test
+    public void getMembers_CorrectlyGetsTeamMembers() throws Exception {
+        Team testTeam = new Team("Blue", "They sure aren't Red");
+        List<String> members = new ArrayList<>();
+        assertEquals(members.getClass(), testTeam.getMembers().getClass());
+    }
+
+    @Test
+    public void addMembers_CorrectlyAddsNewMembers() throws Exception{
+        Team testTeam = new Team("Blue", "They sure aren't Red");
+        String newMember = "Johnny Boi";
+        testTeam.addMembers(newMember);
+        assertTrue(testTeam.getMembers().contains(newMember));
+
+    }
 
     @Test
     public void getId_CorrectlyGetsId() throws Exception {
@@ -45,7 +70,7 @@ public class TeamTest {
     }
 
     @Test
-    public void findById_FindsCorrectJobById() throws Exception {
+    public void findById_FindsCorrectTeamById() throws Exception {
         Team testTeam = new Team("Blue", "They sure aren't Red");
         Team team = new Team("Red", "They sure aren't Blue");
         assertEquals(1, Team.findById(testTeam.getId()).getId());
@@ -53,23 +78,19 @@ public class TeamTest {
     }
 
     @Test
-    public void updateTeam_CorrectlyChangesTeamProps() throws Exception {
+    public void updateTeam_CorrectlyChangesTeamName() throws Exception {
         Team testTeam = new Team("Blue", "They sure aren't Red");
-        String oldTeamName = testTeam.getTeamName();
-        String oldDescription = testTeam.getDescription();
-        String oldMember = testTeam.getMember();
         int oldId = testTeam.getId();
+        String oldDescription = testTeam.getDescription();
+        String oldTeamName = testTeam.getTeamName();
+//        String oldMember = testTeam.getMembers();
 
         testTeam.updateTeam("Green");
 
         assertEquals(oldId, testTeam.getId());
         assertEquals(oldDescription, testTeam.getDescription());
-        assertEquals(oldMember, testTeam.getMember());
         assertNotEquals(oldTeamName, testTeam.getTeamName());
+//        assertEquals(oldMember, testTeam.getMembers());
     }
 
-    @After
-    public void tearDown() throws Exception {
-        Team.clearAllTeams();
-    }
 }

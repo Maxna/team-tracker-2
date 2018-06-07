@@ -1,27 +1,25 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
     private String teamName;
     private String description;
-    private static ArrayList<Members> memberList = new ArrayList<>();
+    private List<String> memberList = new ArrayList<>();
+    private static List<Team> teamList = new ArrayList<>();
     private int id;
-    private static ArrayList<Team> teamList = new ArrayList<>();
-    private String member;
 
 
     public Team(String teamName, String description) {
         this.teamName = teamName;
         this.description = description;
-        memberList.add(this);
-        this.id = teamList.size();
+        this.memberList = memberList;
         teamList.add(this);
-
-//        this.member = member;
-//        this.id = memberList.size();
+        this.id = teamList.size();
 
     }
+
 
     // Start Getters
 
@@ -33,7 +31,7 @@ public class Team {
         return description;
     }
 
-    public static ArrayList<Members> getMembers() {
+    public List<String> getMembers() {
         return memberList;
     }
 
@@ -41,14 +39,16 @@ public class Team {
         return id;
     }
 
-    public static ArrayList<Team> getTeams() {
+    public static List<Team> getTeams() {
         return teamList;
     }
 
     // End Getters
 
-    public void updateMembers(String member) {
-        this.memberList = memberList;
+    public void addMembers(String member) {
+        if (!member.equals("")) {
+            this.memberList.add(member);
+        }
     }
 
     public static Team findById(int id) {

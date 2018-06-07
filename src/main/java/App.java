@@ -1,6 +1,7 @@
 import models.Team;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +26,8 @@ public class App {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Team> teams = Team.getTeams();
+            List<Team> teams = Team.getTeams();
+            List<String> members = Team.getMembers();
             model.put("teams", teams);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
