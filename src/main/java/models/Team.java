@@ -14,7 +14,6 @@ public class Team {
     public Team(String teamName, String description) {
         this.teamName = teamName;
         this.description = description;
-        this.memberList = memberList;
         teamList.add(this);
         this.id = teamList.size();
 

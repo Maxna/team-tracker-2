@@ -36,7 +36,7 @@ public class App {
             String teamName = req.queryParams("teamName");
             String description = req.queryParams("description");
             Team newTeam = new Team(teamName, description);
-            String newMember = req.queryParams("member");
+            String newMember = req.queryParams("memberList");
             Member member = new Member(newMember);
             newTeam.addMembers(member);
             model.put("team", newTeam);
@@ -49,6 +49,17 @@ public class App {
             Team foundTeam = Team.findById(idOfTeamToFind);
             model.put("team", foundTeam);
             return new ModelAndView(model, "team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newMember = request.queryParams("teamName");
+            Member aMember = new Member(newMember);
+            int idOfTeamToFind = Integer.parseInt(request.params("id"));
+            Team newTeam = Team.findById(idOfTeamToFind);
+            newTeam.addMembers(aMember);
+            response.redirect("/teams/" + newTeam.getId());
+            return null;
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:id/update", (req, res) -> {
