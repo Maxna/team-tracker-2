@@ -1,7 +1,7 @@
 import models.Team;
+import models.Member;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +26,7 @@ public class App {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Team> teams = Team.getTeams();
-            List<String> members = Team.getMembers();
+            ArrayList<Team> teams = Team.getTeams();
             model.put("teams", teams);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
@@ -36,8 +35,10 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String teamName = req.queryParams("teamName");
             String description = req.queryParams("description");
-            String member = req.queryParams("member");
             Team newTeam = new Team(teamName, description);
+            String newMember = req.queryParams("member");
+            Member member = new Member(newMember);
+            newTeam.addMembers(member);
             model.put("team", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());

@@ -2,7 +2,17 @@
     <p>Team Info</p>
     <p>Team Name: {{team.teamName}}</p>
     <p>About: {{team.description}}</p>
-    <p>Members: {{team.memberList}}</p>
+    <p>Members:</p>
+    <ul>
+        {{#each team.memberList}}
+            <p>{{teamMember}}</p>
+        {{/each}}
+    </ul>
+    <form action="/teams/{{team.id}}" method="post">
+        <label for="teamMember">Add members</label>
+        <input id="teamMember" name="teamMember" type="text">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
 
     <br>
     <a href="/teams/{{team.id}}/update">Edit this team</a>

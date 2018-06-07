@@ -47,15 +47,6 @@ public class TeamTest {
     }
 
     @Test
-    public void addMembers_CorrectlyAddsNewMembers() throws Exception{
-        Team testTeam = new Team("Blue", "They sure aren't Red");
-        String newMember = "Johnny Boi";
-        testTeam.addMembers(newMember);
-        assertTrue(testTeam.getMembers().contains(newMember));
-
-    }
-
-    @Test
     public void getId_CorrectlyGetsId() throws Exception {
         Team testTeam = new Team("Blue", "They sure aren't Red");
         assertEquals(1, testTeam.getId());
