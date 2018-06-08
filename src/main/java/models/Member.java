@@ -3,20 +3,19 @@ package models;
 import java.util.Objects;
 
 public class Member {
-
-    private String teamMember;
+    private String member;
     private int id;
 
-    public Member (String teamMember) {
-        this.teamMember = teamMember;
+    public Member (String member) {
+        this.member = member;
     }
 
-    public void setTeamMember(String teamMember) {
-        this.teamMember = teamMember;
+    public void setMember(String member) {
+        this.member = member;
     }
 
-    public String getTeamMember() {
-        return teamMember;
+    public String getMember() {
+        return member;
     }
 
     public void setId(int id) {
@@ -31,14 +30,14 @@ public class Member {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Member member = (Member) o;
-        return id == member.id &&
-                Objects.equals(teamMember, member.teamMember);
+        Member member1 = (Member) o;
+        return id == member1.id &&
+                Objects.equals(member, member1.member);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(teamMember, id);
+        return Objects.hash(member, id);
     }
 }

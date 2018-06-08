@@ -17,6 +17,14 @@ public class sql2oTeamDaoTest {
         conn = sql2o.open();
     }
 
+    @Test
+    public void addingTeamSetsId() throws Exception {
+        Team team = new Team ("Epicodus");
+        int originalTeamId = Team.getId();
+        teamDao.add(team);
+        assertNotEquals(originalTeamId, team.getId());
+    }
+
     @After
     public void tearDown() throws Exception {
         conn.close();
