@@ -19,11 +19,6 @@ public class App {
             return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/about", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "about-us.hbs");
-        }, new HandlebarsTemplateEngine());
-
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Team> teams = Team.getTeams();
@@ -31,15 +26,20 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/about", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "about-us.hbs");
+        }, new HandlebarsTemplateEngine());
+
         post("/teams/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String teamName = req.queryParams("teamName");
             String description = req.queryParams("description");
             Team newTeam = new Team(teamName, description);
-            String newMember = req.queryParams("memberList");
-            Member member = new Member(newMember);
-            newTeam.addMembers(member);
-            model.put("team", newTeam);
+            String newMember = req.queryParams("aMember");
+            Member aMember = new Member(newMember);
+            newTeam.addMembers(aMember);
+            model.put("teams", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -53,12 +53,12 @@ public class App {
 
         post("/teams/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String newMember = request.queryParams("teamName");
-            Member aMember = new Member(newMember);
+            String newMembers = request.queryParams("teamMember");
+            Member newMember = new Member(newMembers);
             int idOfTeamToFind = Integer.parseInt(request.params("id"));
-            Team newTeam = Team.findById(idOfTeamToFind);
-            newTeam.addMembers(aMember);
-            response.redirect("/teams/" + newTeam.getId());
+            Team newSquad = Team.findById(idOfTeamToFind);
+            newSquad.addMembers(newMember);
+            response.redirect("/teams/" + newSquad.getId());
             return null;
         }, new HandlebarsTemplateEngine());
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Team {
     private String teamName;
     private String description;
-    private ArrayList<Member> memberList = new ArrayList<>();
+    private ArrayList<Member> members = new ArrayList<>();
     private static ArrayList<Team> teamList = new ArrayList<>();
     private int id;
 
@@ -16,10 +16,7 @@ public class Team {
         this.description = description;
         teamList.add(this);
         this.id = teamList.size();
-
     }
-
-
 
     public String getTeamName() {
         return teamName;
@@ -31,11 +28,11 @@ public class Team {
 
     public void addMembers(Member member) {
 
-            memberList.add(member);
+            members.add(member);
     }
 
     public ArrayList<Member> getMembers() {
-        return memberList;
+        return members;
     }
 
     public int getId() {
@@ -45,7 +42,6 @@ public class Team {
     public static ArrayList<Team> getTeams() {
         return teamList;
     }
-
 
     public static Team findById(int id) {
         return teamList.get(id-1);

@@ -47,6 +47,14 @@ public class TeamTest {
     }
 
     @Test
+    public void getMembers_CorrectlyGetsTeamMembersSize() throws Exception {
+        Team testTeam = new Team("Blue", "They sure aren't Red");
+        Member member = new Member("jeff");
+        testTeam.addMembers(member);
+        assertEquals(1, testTeam.getMembers().size());
+    }
+
+    @Test
     public void getId_CorrectlyGetsId() throws Exception {
         Team testTeam = new Team("Blue", "They sure aren't Red");
         assertEquals(1, testTeam.getId());

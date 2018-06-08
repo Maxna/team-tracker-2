@@ -7,7 +7,7 @@ public class Member {
         this.teamMember = teamMember;
     }
 
-    public String getMembers(){
+    public String getNewMembers(){
         return teamMember;
     }
 }

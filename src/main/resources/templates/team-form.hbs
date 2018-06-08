@@ -6,8 +6,6 @@
             <label for="teamName">Change this team's name</label>
             <input id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
             <br>
-            <label for="members">Add team members</label>
-            <input id="members" name="members" type="text" value="{{editTeam.memberList}}">
 
     {{else}}
             <h3>Add a new Team</h3>
@@ -19,8 +17,8 @@
             <label for="description">About this team</label>
             <input id="description" name="description" type="text">
             <br>
-            <label for="member">Team Members</label>
-            <input id="member" name="member" type="text">
+            <label for="aMember">Team Members</label>
+            <input id="aMember" name="aMember" type="text">
     {{/if}}<br><br>
         <button type="submit" class="btn btn-default">Submit Changes!</button>
     </form>

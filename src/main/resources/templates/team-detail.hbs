@@ -3,11 +3,11 @@
     <p>Team Name: {{team.teamName}}</p>
     <p>About: {{team.description}}</p>
     <p>Members:</p>
-    <ul>
-        {{#each team.memberList}}
-            <p>{{teamMember}}</p>
-        {{/each}}
-    </ul>
+        <ul>
+            {{#each team.memberList}}
+                <p>{{teamMember}}</p>
+            {{/each}}
+        </ul>
     <form action="/teams/{{team.id}}" method="post">
         <label for="teamMember">Add members</label>
         <input id="teamMember" name="teamMember" type="text">
