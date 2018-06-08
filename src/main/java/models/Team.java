@@ -1,21 +1,28 @@
 package models;
 
-import java.util.ArrayList;
-
+import java.util.Objects;
 
 public class Team {
     private String teamName;
     private String description;
-    private ArrayList<Member> members = new ArrayList<>();
-    private static ArrayList<Team> teamList = new ArrayList<>();
     private int id;
 
 
     public Team(String teamName, String description) {
         this.teamName = teamName;
         this.description = description;
-        teamList.add(this);
-        this.id = teamList.size();
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTeamName() {
@@ -26,33 +33,43 @@ public class Team {
         return description;
     }
 
-    public void addMembers(Member member) {
-
-            members.add(member);
-    }
-
-    public ArrayList<Member> getMembers() {
-        return members;
-    }
-
     public int getId() {
         return id;
     }
 
-    public static ArrayList<Team> getTeams() {
-        return teamList;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return id == team.id &&
+                Objects.equals(teamName, team.teamName) &&
+                Objects.equals(description, team.description);
     }
 
-    public static Team findById(int id) {
-        return teamList.get(id-1);
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(teamName, description, id);
     }
 
-    public void updateTeam(String teamName) {
-        this.teamName = teamName;
-    }
 
-    public static void clearAllTeams(){
-        teamList.clear();
-    }
+
+    //    public void addMembers(Member member) {
+//
+//            members.add(member);
+//    }
+//
+//    public static Team findById(int id) {
+//        return teamList.get(id-1);
+//    }
+//
+//    public void updateTeam(String teamName) {
+//        this.teamName = teamName;
+//    }
+//
+//    public static void clearAllTeams(){
+//        teamList.clear();
+//    }
 }
 
