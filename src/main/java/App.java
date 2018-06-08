@@ -53,7 +53,7 @@ public class App {
 
         post("/teams/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String newMembers = request.queryParams("teamMember");
+            String newMembers = request.queryParams("members");
             Member newMember = new Member(newMembers);
             int idOfTeamToFind = Integer.parseInt(request.params("id"));
             Team newSquad = Team.findById(idOfTeamToFind);
