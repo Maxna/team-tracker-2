@@ -11,10 +11,10 @@ public interface MemberDao {
     void add(Member member);
 
     // READ
-    Member findByID(int id);
+    Member findById(int id);
 
-    // UPDATE
-    void update(int id, String member);
+    // UPDATE Might have to rename member to content
+    void update(int id, String newMember);
 
     // DELETE
     void deleteById(int id);
