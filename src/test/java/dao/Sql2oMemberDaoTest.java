@@ -5,7 +5,7 @@ import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class sql2oMemberDaoTest {
+public class Sql2oMemberDaoTest {
     private sql2oMemberDao memberDao;
     private Connection conn;
 

@@ -14,7 +14,7 @@ public interface MemberDao {
     Member findById(int id);
 
     // UPDATE Might have to rename member to content
-    void update(int id, String newMember);
+    void update(int id, String newMember, int teamId);
 
     // DELETE
     void deleteById(int id);

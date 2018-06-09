@@ -2,13 +2,12 @@ SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS teams (
     id int PRIMARY KEY auto_increment,
-    name VARCHAR,
     description VARCHAR,
-    completed BOOLEAN
+    team VARCHAR,
 );
 
 CREATE TABLE IF NOT EXISTS members (
-    ind int PRIMARY KEY auto_increment,
-    name VARCHAR,
+    id int PRIMARY KEY auto_increment,
+    member VARCHAR,
     teamId INTEGER
 );

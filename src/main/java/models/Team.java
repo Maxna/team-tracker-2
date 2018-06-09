@@ -17,20 +17,20 @@ public class Team {
         this.team = team;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTeam() {
         return team;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -53,21 +53,5 @@ public class Team {
         return Objects.hash(team, description, id);
     }
 
-    //    public void addMembers(Member member) {
-//
-//            members.add(member);
-//    }
-//
-//    public static Team findById(int id) {
-//        return teamList.get(id-1);
-//    }
-//
-//    public void updateTeam(String teamName) {
-//        this.teamName = teamName;
-//    }
-//
-//    public static void clearAllTeams(){
-//        teamList.clear();
-//    }
 }
 

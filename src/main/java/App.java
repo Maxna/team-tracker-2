@@ -2,8 +2,13 @@
 //import models.Member;
 //
 //import java.util.ArrayList;
+//import java.util.List;
 //import java.util.HashMap;
 //import java.util.Map;
+//
+//import org.sql2o.Sql2o;
+//import dao.Sql2oTeamDao;
+//import dao.Sql2oMemberDao;
 //
 //import spark.ModelAndView;
 //import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -13,6 +18,10 @@
 //public class App {
 //    public static void main(String[] args) {
 //        staticFileLocation("/public");
+//        String connectionstring = "jdbc:h2:~/team-tracker.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+//        Sql2o sql2o = new Sql2o(connectionstring, "", "");
+//        Sql2oMemberDao memberDao = new Sql2oMemberDao(sql2o);
+//        Sql2oTeamDao teamDao = new Sql2oTeamDao(sql2o);
 //
 //        get("/teams/new", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
