@@ -6,7 +6,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class Sql2oMemberDaoTest {
-    private sql2oMemberDao memberDao;
+    private Sql2oMemberDao memberDao;
     private Connection conn;
 
     @Before
@@ -19,26 +19,26 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void addingMemberSetsId() throws Exception {
-        Member member = new Member ("jeff", 1);
-        int originalMemberId = Member.getId();
-        memberDao.add(member);
-        assertNotEquals(originalMemberId, member.getId());
+        Member name = new Member ("jeff", 1);
+        int originalMemberId = name.getId();
+        memberDao.add(name);
+        assertNotEquals(originalMemberId, name.getId());
     }
 
     @Test
     public void existingMembersFoundById() throws Exception{
-        Member member = new Member("jeff", 1);
-        int originalMemberId = Member.getId();
-        memberDao.add(member);
-        assertNotEquals(originalMemberId, member.getId());
+        Member name = new Member("jeff", 1);
+        int originalMemberId = name.getId();
+        memberDao.add(name);
+        assertNotEquals(originalMemberId, name.getId());
     }
 
     @Test
     public void getAllCorrectlyGetsAll() throws Exception{
-        Member member = new Member("jeff", 1);
-        memberDao.add(member);
-        Member member2 = new Member("paul", 1);
-        memberDao.add(member2);
+        Member name = new Member("jeff", 1);
+        memberDao.add(name);
+        Member name2 = new Member("paul", 1);
+        memberDao.add(name2);
         assertEquals(2, memberDao.getAll().size());
     }
 
@@ -49,37 +49,37 @@ public class Sql2oMemberDaoTest {
 
     @Test
     public void updateWorksCorrectly() throws Exception{
-        Member member = new Member("jeff", 1);
-        memberDao.add(member);
-        memberDao.update(member.getId(), "paul", 1);
-        Member updatedMember = memberDao.findById(member.getId());
-        assertEquals("paul", updatedMember.getMember());
+        Member name = new Member("jeff", 1);
+        memberDao.add(name);
+        memberDao.update(name.getId(), "paul", 1);
+        Member updatedName = memberDao.findById(name.getId());
+        assertEquals("paul", updatedName.getName());
     }
 
     @Test
     public void deleteWorksCorrectly() throws Exception{
-        Member member = new Member("jeff", 1);
-        memberDao.add(member);
-        memberDao.deleteById(member.getId());
+        Member name = new Member("jeff", 1);
+        memberDao.add(name);
+        memberDao.deleteById(name.getId());
         assertEquals(0, memberDao.getAll().size());
     }
 
     @Test
     public void clearAllMembers() throws Exception{
-        Member member = new Member("jeff", 1);
-        Member member1 = new Member("paul", 1);
-        memberDao.add(member);
-        memberDao.add(member1);
+        Member name = new Member("jeff", 1);
+        Member name1 = new Member("paul", 1);
+        memberDao.add(name);
+        memberDao.add(name1);
         memberDao.clearAllMembers();
         assertEquals(0, memberDao.getAll().size());
     }
 
     @Test
     public void teamIdReturnsCorrectly() throws Exception{
-        Member member = new Member("jeff", 1);
-        int originalTeamId = member.getTeamId();
-        memberDao.add(member);
-        assertEquals(originalTeamId, memberDao.findById(member.getId()).getTeamId());
+        Member name = new Member("jeff", 1);
+        int originalTeamId = name.getTeamId();
+        memberDao.add(name);
+        assertEquals(originalTeamId, memberDao.findById(name.getId()).getTeamId());
     }
 
     @After

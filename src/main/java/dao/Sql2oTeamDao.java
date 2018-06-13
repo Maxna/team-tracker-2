@@ -13,14 +13,14 @@ public class Sql2oTeamDao implements TeamDao {
     }
 
     @Override
-    public void add(Team team) {
-        String sql = "INSERT INTO teams (team) VALUES (:team)";
+    public void add(Team name) {
+        String sql = "INSERT INTO teams (name) VALUES (:name)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
-                    .bind(team)
+                    .bind(name)
                     .executeUpdate()
                     .getKey();
-            team.setId(id);
+            name.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
@@ -44,11 +44,11 @@ public class Sql2oTeamDao implements TeamDao {
     }
 
     @Override
-    public void update(int id, String newTeam){
+    public void update(int id, String newName){
         String sql = "UPDATE teams SET team = :team WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("team", newTeam)
+                    .addParameter("name", newName)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

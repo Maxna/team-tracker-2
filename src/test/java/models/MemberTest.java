@@ -8,14 +8,14 @@ public class MemberTest {
 
     @Test
     public void member_CorrectlyInstantiatesMember() throws Exception {
-        Member member = new Member("jeff");
-        assertTrue(member instanceof Member);
+        Member name = new Member("jeff", 1);
+        assertTrue(name instanceof Member);
     }
 
     @Test
     public void getMember_CorrectlyGetsMember() throws Exception{
-        Member member = new Member("jeff");
-        assertEquals("jeff", member.getMember());
+        Member name = new Member("jeff", 1);
+        assertEquals("jeff", name.getName());
     }
 
 }

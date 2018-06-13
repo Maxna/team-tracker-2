@@ -12,7 +12,7 @@ public interface TeamDao {
     List<Member> getAllMembersByTeam(int teamId);
 
     // CREATE
-    void add(Team team);
+    void add(Team name);
 
     // READ
     Team findById(int id);
