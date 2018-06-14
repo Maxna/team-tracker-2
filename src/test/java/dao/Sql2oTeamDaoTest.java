@@ -22,26 +22,26 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void addingTeamSetsId() throws Exception {
-        Team name = new Team ("epicodus", "school");
-        int originalTeamId = name.getId();
-        teamDao.add(name);
-        assertNotEquals(originalTeamId, name.getId());
+        Team testTeam = new Team ("epicodus", "school");
+        int originalTeamId = testTeam.getId();
+        teamDao.add(testTeam);
+        assertNotEquals(originalTeamId, testTeam.getId());
     }
 
     @Test
     public void existingTeamsFoundById() throws Exception{
-        Team name = new Team("epicodus", "school");
-        int originalTeamId = name.getId();
-        teamDao.add(name);
-        assertNotEquals(originalTeamId, name.getId());
+        Team testTeam = new Team("epicodus", "school");
+        int originalTeamId = testTeam.getId();
+        teamDao.add(testTeam);
+        assertNotEquals(originalTeamId, testTeam.getId());
     }
 
     @Test
     public void getAllCorrectlyGetsAll() throws Exception{
-        Team name = new Team("epicodus", "school");
-        teamDao.add(name);
-        Team name2 = new Team("students", "school");
-        teamDao.add(name2);
+        Team testTeam = new Team("epicodus", "school");
+        teamDao.add(testTeam);
+        Team otherTeam = new Team("students", "school");
+        teamDao.add(otherTeam);
         assertEquals(2, teamDao.getAll().size());
     }
 
@@ -52,36 +52,36 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void updateWorksCorrectly() throws Exception{
-        Team name = new Team("epicodus", "school");
-        teamDao.add(name);
-        teamDao.update(name.getId(), "students");
-        Team updatedName = teamDao.findById(name.getId());
+        Team testTeam = new Team("epicodus", "school");
+        teamDao.add(testTeam);
+        teamDao.update(testTeam.getId(), "students");
+        Team updatedName = teamDao.findById(testTeam.getId());
         assertEquals("students", updatedName.getName());
     }
 
     @Test
     public void deleteWorksCorrectly() throws Exception{
-        Team name = new Team("epicodus", "school");
-        teamDao.add(name);
-        teamDao.deleteById(name.getId());
+        Team testTeam = new Team("epicodus", "school");
+        teamDao.add(testTeam);
+        teamDao.deleteById(testTeam.getId());
         assertEquals(0, teamDao.getAll().size());
     }
 
     @Test
     public void clearAllTeams() throws Exception{
-        Team name = new Team("epicodus", "school");
-        Team name1 = new Team("students", "school");
-        teamDao.add(name);
-        teamDao.add(name1);
+        Team testTeam = new Team("epicodus", "school");
+        Team otherTeam = new Team("students", "school");
+        teamDao.add(testTeam);
+        teamDao.add(otherTeam);
         teamDao.clearAllTeams();
         assertEquals(0, teamDao.getAll().size());
     }
 
     @Test
     public void getAllMembersByTeamWorks() throws Exception{
-        Team name = new Team("epicodus", "school");
-        teamDao.add(name);
-        int teamId = name.getId();
+        Team testTeam = new Team("epicodus", "school");
+        teamDao.add(testTeam);
+        int teamId = testTeam.getId();
         Member name1 = new Member("mike", 1);
         Member name2 = new Member("jim", 1);
         Member name3 = new Member("ross", 1);
