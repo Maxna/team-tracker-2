@@ -8,13 +8,13 @@ public class Team {
     private int id;
 
 
-    public Team(String team, String description) {
-        this.name = team;
+    public Team(String name, String description) {
+        this.name = name;
         this.description = description;
     }
 
-    public void setName(String team) {
-        this.name = team;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

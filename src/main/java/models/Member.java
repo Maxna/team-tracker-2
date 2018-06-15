@@ -7,12 +7,13 @@ public class Member {
     private int teamId;
     private int id;
 
-    public Member (String member, int teamId) {
-        this.name = member;
+    public Member (String name, int teamId) {
+        this.name = name;
+        this.teamId = teamId;
     }
 
-    public void setName(String member) {
-        this.name = member;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

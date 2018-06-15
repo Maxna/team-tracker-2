@@ -18,7 +18,7 @@ public interface TeamDao {
     Team findById(int id);
 
     // UPDATE
-    void update(int id, String team);
+    void update(int id, String name);
 
     // DELETE
     void deleteById(int id);

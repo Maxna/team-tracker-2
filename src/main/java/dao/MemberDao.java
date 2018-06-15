@@ -13,7 +13,7 @@ public interface MemberDao {
     // READ
     Member findById(int id);
 
-    // UPDATE Might have to rename member to content
+    // UPDATE
     void update(int id, String newMember, int teamId);
 
     // DELETE
