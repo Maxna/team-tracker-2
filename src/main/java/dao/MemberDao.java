@@ -8,7 +8,7 @@ public interface MemberDao {
     List<Member> getAll();
 
     // CREATE
-    void add(Member name);
+    void add(Member member);
 
     // READ
     Member findById(int id);

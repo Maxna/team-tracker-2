@@ -53,7 +53,8 @@ public class App {
             Member aMember = new Member(newMember, newTeamId);
             memberDao.add(aMember);
             model.put("teams", newTeam);
-            return new ModelAndView(model, "success.hbs");
+            res.redirect("/");
+            return null;
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:id", (req, res) -> {
@@ -61,14 +62,18 @@ public class App {
             int idOfTeamToFind = Integer.parseInt(req.params("id"));
             Team foundTeam = teamDao.findById(idOfTeamToFind);
             model.put("team", foundTeam);
+            List<Member> allMembersForATeam = teamDao.getAllMembersByTeam(idOfTeamToFind);
+            model.put("members", allMembersForATeam);
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String newMember = request.queryParams("aMember");
+            String newMember = request.queryParams("name");
             int idOfTeamToFind = Integer.parseInt(request.params("id"));
             Member aMember = new Member(newMember, idOfTeamToFind);
+//            Team newTeam = teamDao.findById(idOfTeamToFind);
+//            teamDao.add(newTeam);
             memberDao.add(aMember);
             response.redirect("/teams/" + idOfTeamToFind);
             return null;
@@ -91,6 +96,17 @@ public class App {
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+//        get("/teams/:teamId/members/:memberId", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfMemberToFind = Integer.parseInt(req.params("memberId"));
+//            Member foundMember = memberDao.findById(idOfMemberToFind);
+//            int idOfTeamToFind = Integer.parseInt(req.params("teamId"));
+//            Team foundTeam = teamDao.findById(idOfTeamToFind);
+//            model.put("member", foundMember);
+//            model.put("team", foundTeam);
+//            return new ModelAndView(model, "edit-member.hbs");
+//        }, new HandlebarsTemplateEngine());
 
     }
 }
