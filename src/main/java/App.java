@@ -50,11 +50,12 @@ public class App {
             String description = req.queryParams("description");
             Team newTeam = new Team(teamName, description);
             teamDao.add(newTeam);
-//            int newTeamId = newTeam.getId();
-//            String newMember = req.queryParams("aMember");
-//            Member aMember = new Member(newMember, newTeamId);
+//            String newMember = req.queryParams("name");
+//            int idOfTeamToFind = Integer.parseInt(req.params("id"));
+//            Member aMember = new Member(newMember, idOfTeamToFind);
 //            memberDao.add(aMember);
             model.put("teams", newTeam);
+//            model.put("members", aMember);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -80,8 +81,6 @@ public class App {
             String newMember = request.queryParams("name");
             int idOfTeamToFind = Integer.parseInt(request.params("id"));
             Member aMember = new Member(newMember, idOfTeamToFind);
-//            Team newTeam = teamDao.findById(idOfTeamToFind);
-//            teamDao.add(newTeam);
             memberDao.add(aMember);
             response.redirect("/teams/" + idOfTeamToFind);
             return null;
@@ -97,10 +96,11 @@ public class App {
 
         post("/teams/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String newTeamName = req.queryParams("teamName");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
+            String newTeamName = req.queryParams("teamName");
+            String newTeamDescription = req.queryParams("description");
             Team editTeam = teamDao.findById(idOfTeamToEdit);
-            teamDao.update(idOfTeamToEdit, newTeamName);
+            teamDao.update(idOfTeamToEdit, newTeamName, newTeamDescription);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());

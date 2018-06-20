@@ -1,16 +1,16 @@
 {{#partial "content"}}
     <p>Team Info</p>
-    <p>Team Name: {{team.teamName}}</p>
+    <p>Team Name: {{team.name}}</p>
     <p>About: {{team.description}}</p>
     <p>Members:</p>
         <ul>
-            {{#each team.memberList}}
-                <p>{{teamMember}}</p>
+            {{#each members}}
+                <p>{{ name }}</p>
             {{/each}}
         </ul>
     <form action="/teams/{{team.id}}" method="post">
-        <label for="teamMember">Add members</label>
-        <input id="teamMember" name="teamMember" type="text">
+        <label for="aMember">Add members</label>
+        <input id="aMember" name="aMember" type="text">
         <button type="submit" class="btn btn-info">Submit</button>
     </form>
 
