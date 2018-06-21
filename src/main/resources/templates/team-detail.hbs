@@ -1,5 +1,4 @@
 {{#partial "content"}}
-    <p>Team Info</p>
     <p>Team Name: {{team.name}}</p>
     <p>About: {{team.description}}</p>
     <p>Members:</p>
@@ -8,18 +7,21 @@
                 <p>{{ name }}</p>
             {{/each}}
         </ul>
-    <form action="/teams/{{team.id}}" method="post">
-        <label for="aMember">Add members</label>
-        <input id="aMember" name="aMember" type="text">
-        <button type="submit" class="btn btn-info">Submit</button>
-    </form>
+    <!--<form action="/teams/{{team.id}}" method="post">-->
+        <!--<label for="aMember">Add members</label>-->
+        <!--<input id="aMember" name="aMember" type="text">-->
+        <!--<button type="submit" class="btn btn-info">Submit</button>-->
+    <!--</form>-->
 
-    <br>
+    <br><br>
     <a href="/teams/{{team.id}}/update">Edit this team</a>
     <br>
-    <a href="/teams/new">Add a new team</a>
-    <br><br>
+    <a href="/members/delete">Remove Team Members</a>
+    <br>
+    <a href="/teams/{{team.id}}/delete">Remove this team</a>
+    <br>
     <a href="/">Back</a>
+    <br>
 
 {{/partial}}
 

@@ -34,14 +34,14 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/teams/new", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "team-form.hbs");
-        }, new HandlebarsTemplateEngine());
-
         get("/about", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "about-us.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "team-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         post("/teams/new", (req, res) -> {
@@ -50,12 +50,7 @@ public class App {
             String description = req.queryParams("description");
             Team newTeam = new Team(teamName, description);
             teamDao.add(newTeam);
-//            String newMember = req.queryParams("name");
-//            int idOfTeamToFind = Integer.parseInt(req.params("id"));
-//            Member aMember = new Member(newMember, idOfTeamToFind);
-//            memberDao.add(aMember);
             model.put("teams", newTeam);
-//            model.put("members", aMember);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -63,6 +58,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             teamDao.clearAllTeams();
             res.redirect("/");
+            halt();
             return null;
         }, new HandlebarsTemplateEngine());
 
@@ -99,9 +95,9 @@ public class App {
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             String newTeamName = req.queryParams("teamName");
             String newTeamDescription = req.queryParams("description");
-            Team editTeam = teamDao.findById(idOfTeamToEdit);
             teamDao.update(idOfTeamToEdit, newTeamName, newTeamDescription);
             res.redirect("/");
+            halt();
             return null;
         }, new HandlebarsTemplateEngine());
 
@@ -114,7 +110,7 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-//        post("/teams/:teamId/members/:id", (req, res) -> {
+//        post("/teams/:id/members/:teamId", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
 //            int idOfMemberToFind = Integer.parseInt(req.params("id"));
 //            Member foundMember = memberDao.findById(idOfMemberToFind);
@@ -125,34 +121,34 @@ public class App {
 //            return new ModelAndView(model, "edit-member.hbs");
 //        }, new HandlebarsTemplateEngine());
 
-        get("/teams/:teamId/members/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfMemberToFind = Integer.parseInt(req.params("id"));
-            Member foundMember = memberDao.findById(idOfMemberToFind);
-            int idOfTeamToFind = Integer.parseInt(req.params("teamId"));
-            Team foundTeam = teamDao.findById(idOfTeamToFind);
-            model.put("member", foundMember);
-            model.put("team", foundTeam);
-            return new ModelAndView(model, "edit-member.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        get("/teams/:teamId/members/:id/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfTeam = Integer.parseInt(req.params("teamId"));
-            int idOfMemberToDelete = Integer.parseInt(req.params("id"));
-            memberDao.deleteById(idOfMemberToDelete);
-            res.redirect("/teams/" + idOfTeam);
-            return null;
-        }, new HandlebarsTemplateEngine());
-
-        post("/members/:id", (req, res) -> {
-            String newName = req.queryParams("name");
-            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
-            int teamIdOfMember = memberDao.findById(idOfMemberToEdit).getTeamId();
-            memberDao.update(idOfMemberToEdit, newName, teamIdOfMember);
-            res.redirect("/teams/" + teamIdOfMember);
-            return null;
-        }, new HandlebarsTemplateEngine());
+//        get("/teams/:id/members/:teamId", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfMemberToFind = Integer.parseInt(req.params("id"));
+//            Member foundMember = memberDao.findById(idOfMemberToFind);
+//            int idOfTeamToFind = Integer.parseInt(req.params("teamId"));
+//            Team foundTeam = teamDao.findById(idOfTeamToFind);
+//            model.put("member", foundMember);
+//            model.put("team", foundTeam);
+//            return new ModelAndView(model, "edit-member.hbs");
+//        }, new HandlebarsTemplateEngine());
+//
+//        get("/teams/:id/members/:teamId/delete", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfTeam = Integer.parseInt(req.params("teamId"));
+//            int idOfMemberToDelete = Integer.parseInt(req.params("id"));
+//            memberDao.deleteById(idOfMemberToDelete);
+//            res.redirect("/teams/" + idOfTeam);
+//            return null;
+//        }, new HandlebarsTemplateEngine());
+//
+//        post("/members/:id", (req, res) -> {
+//            String newName = req.queryParams("name");
+//            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
+//            int teamIdOfMember = memberDao.findById(idOfMemberToEdit).getTeamId();
+//            memberDao.update(idOfMemberToEdit, newName, teamIdOfMember);
+//            res.redirect("/teams/" + teamIdOfMember);
+//            return null;
+//        }, new HandlebarsTemplateEngine());
 
     }
 }

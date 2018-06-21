@@ -54,9 +54,11 @@ public class Sql2oTeamDaoTest {
     public void updateWorksCorrectly() throws Exception{
         Team testTeam = new Team("epicodus", "school");
         teamDao.add(testTeam);
-        teamDao.update(testTeam.getId(), "students");
+        teamDao.update(testTeam.getId(), "students", "coders");
         Team updatedName = teamDao.findById(testTeam.getId());
-        assertEquals("students", updatedName.getName());
+        assertEquals("students", updatedName.getName()
+        );
+        assertEquals("coders", updatedName.getDescription());
     }
 
     @Test
