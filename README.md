@@ -11,20 +11,26 @@ A team tracking app developed in Java on Intellij that will take inputs for team
 ### Setup
 1. Clone from github
 2. Open Intellij
+
     *Check for current dependencies (found in build.gradle)
-    *Check for current plug-ins (Handlebars/Mustache)
+    
+    *Check for current plug-ins (Handlebars/Mustache & Markdown Support)
 3. Open Browser
 4. Recompile and run
 
 
-
 ### Technologies Used
-Java
-Intellij
-Spark
-Handlebars
-H2
-SQL
+*Java
+
+*Intellij
+
+*Spark
+
+*Handlebars
+
+*H2
+
+*SQL
 
 
 # Specs
