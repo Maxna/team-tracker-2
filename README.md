@@ -9,18 +9,16 @@ A team tracking app developed in Java on Intellij that will take inputs for team
 
 
 ### Setup
-
-*Clone from github
-*Open Intellij
-    **Check for current dependencies (found in build.gradle)
-    **Check for current plug-ins (Handlebars/Mustache)
-*Open Browser
-*Recompile and run
+1. Clone from github
+2. Open Intellij
+    *Check for current dependencies (found in build.gradle)
+    *Check for current plug-ins (Handlebars/Mustache)
+3. Open Browser
+4. Recompile and run
 
 
 
 ### Technologies Used
-
 Java
 Intellij
 Spark
@@ -45,8 +43,8 @@ _*User Story:*_
 #### Links
 https://github.com/Maxna/team-tracker-2
 
-#### License
 
+#### License
 _This software is licensed under the MIT licensed_
 
 Copyright (c) 2018 Matt Nardoni.
