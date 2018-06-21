@@ -10,12 +10,12 @@ A team tracking app developed in Java on Intellij that will take inputs for team
 
 ### Setup
 
-Clone from github
-Open Intellij
-    -Check for current dependencies (found in build.gradle)
-    -Check for current plug-ins (Handlebars/Mustache)
-Open Browser
-Recompile and run
+*Clone from github
+*Open Intellij
+    **Check for current dependencies (found in build.gradle)
+    **Check for current plug-ins (Handlebars/Mustache)
+*Open Browser
+*Recompile and run
 
 
 
@@ -31,13 +31,13 @@ SQL
 
 # Specs
 _*User Story:*_
-|1. The user should be able to view and interact with teams listed on the home page.|
-|2. The user should be able to route to team descriptions from the home page.|
-|3. The user should be able to update team names and add members on team information page.|
-|4. The user should be able to navigate to the home page from anywhere on the site.|
-|5. The user should be able to create a new team.|
-|6. The user should be able to edit team names and descriptions, and member names.|
-|7. The user should be able to delete teams and members.|
+1. The user should be able to view and interact with teams listed on the home page.
+2. The user should be able to route to team descriptions from the home page.
+3. The user should be able to update team names and add members on team information page.
+4. The user should be able to navigate to the home page from anywhere on the site.
+5. The user should be able to create a new team.
+6. The user should be able to edit team names and descriptions, and member names.
+7. The user should be able to delete teams and members.
 
 
 
