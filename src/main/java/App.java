@@ -50,6 +50,10 @@ public class App {
             String description = req.queryParams("description");
             Team newTeam = new Team(teamName, description);
             teamDao.add(newTeam);
+            int newTeamId = newTeam.getId();
+            String newName = req.queryParams("name");
+            Member newMember = new Member(newName, newTeamId);
+            memberDao.add(newMember);
             model.put("teams", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -79,6 +83,7 @@ public class App {
             Member aMember = new Member(newMember, idOfTeamToFind);
             memberDao.add(aMember);
             response.redirect("/teams/" + idOfTeamToFind);
+            halt();
             return null;
         }, new HandlebarsTemplateEngine());
 
@@ -110,16 +115,16 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-//        post("/teams/:id/members/:teamId", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfMemberToFind = Integer.parseInt(req.params("id"));
-//            Member foundMember = memberDao.findById(idOfMemberToFind);
-//            int idOfTeamToFind = Integer.parseInt(req.params("teamId"));
-//            Team foundTeam = teamDao.findById(idOfTeamToFind);
-//            model.put("member", foundMember);
-//            model.put("team", foundTeam);
-//            return new ModelAndView(model, "edit-member.hbs");
-//        }, new HandlebarsTemplateEngine());
+        post("/teams/:id/members/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfMemberToFind = Integer.parseInt(req.params("id"));
+            Member foundMember = memberDao.findById(idOfMemberToFind);
+            int idOfTeamToFind = Integer.parseInt(req.params("id"));
+            Team foundTeam = teamDao.findById(idOfTeamToFind);
+            model.put("member", foundMember);
+            model.put("team", foundTeam);
+            return new ModelAndView(model, "edit-member.hbs");
+        }, new HandlebarsTemplateEngine());
 
 //        get("/teams/:id/members/:teamId", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();

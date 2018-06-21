@@ -2,16 +2,20 @@
     <p>Team Name: {{team.name}}</p>
     <p>About: {{team.description}}</p>
     <p>Members:</p>
+    <!--{{#if members}}-->
         <ul>
             {{#each members}}
                 <p>{{ name }}</p>
             {{/each}}
         </ul>
-    <!--<form action="/teams/{{team.id}}" method="post">-->
-        <!--<label for="aMember">Add members</label>-->
-        <!--<input id="aMember" name="aMember" type="text">-->
-        <!--<button type="submit" class="btn btn-info">Submit</button>-->
-    <!--</form>-->
+    <!--{{else}}-->
+        <!--<p>No Members yet.</p>-->
+    <!--{{/if}}-->
+    <form action="/teams/{{team.id}}" method="post">
+        <label for="name">Add members</label>
+        <input id="name" name="name" type="text">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
 
     <br><br>
     <a href="/teams/{{team.id}}/update">Edit this team</a>
