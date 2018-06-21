@@ -115,16 +115,16 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        post("/teams/:id/members/:id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfMemberToFind = Integer.parseInt(req.params("id"));
-            Member foundMember = memberDao.findById(idOfMemberToFind);
-            int idOfTeamToFind = Integer.parseInt(req.params("id"));
-            Team foundTeam = teamDao.findById(idOfTeamToFind);
-            model.put("member", foundMember);
-            model.put("team", foundTeam);
-            return new ModelAndView(model, "edit-member.hbs");
-        }, new HandlebarsTemplateEngine());
+//        post("/teams/:id/members/:id", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfMemberToFind = Integer.parseInt(req.params("id"));
+//            Member foundMember = memberDao.findById(idOfMemberToFind);
+//            int idOfTeamToFind = Integer.parseInt(req.params("id"));
+//            Team foundTeam = teamDao.findById(idOfTeamToFind);
+//            model.put("member", foundMember);
+//            model.put("team", foundTeam);
+//            return new ModelAndView(model, "edit-member.hbs");
+//        }, new HandlebarsTemplateEngine());
 
 //        get("/teams/:id/members/:teamId", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
@@ -145,15 +145,23 @@ public class App {
 //            res.redirect("/teams/" + idOfTeam);
 //            return null;
 //        }, new HandlebarsTemplateEngine());
-//
-//        post("/members/:id", (req, res) -> {
-//            String newName = req.queryParams("name");
-//            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
-//            int teamIdOfMember = memberDao.findById(idOfMemberToEdit).getTeamId();
-//            memberDao.update(idOfMemberToEdit, newName, teamIdOfMember);
-//            res.redirect("/teams/" + teamIdOfMember);
-//            return null;
-//        }, new HandlebarsTemplateEngine());
+
+        get("/members/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfMemberToFind = Integer.parseInt(req.params("id"));
+            Member foundMember = memberDao.findById(idOfMemberToFind);
+            model.put("member", foundMember);
+            return new ModelAndView(model, "edit-member.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/members/:id", (req, res) -> {
+            String newName = req.queryParams("name");
+            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
+            int teamIdOfMember = memberDao.findById(idOfMemberToEdit).getTeamId();
+            memberDao.update(idOfMemberToEdit, newName, teamIdOfMember);
+            res.redirect("/teams/" + teamIdOfMember);
+            return null;
+        }, new HandlebarsTemplateEngine());
 
     }
 }

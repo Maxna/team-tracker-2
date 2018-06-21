@@ -2,15 +2,16 @@
     <p>Team Name: {{team.name}}</p>
     <p>About: {{team.description}}</p>
     <p>Members:</p>
-    <!--{{#if members}}-->
+    {{#if members}}
         <ul>
             {{#each members}}
-                <p>{{ name }}</p>
+                <p>{{ name }} ---- <a href="/members/{{id}}">Member Details</a></p>
             {{/each}}
         </ul>
-    <!--{{else}}-->
-        <!--<p>No Members yet.</p>-->
-    <!--{{/if}}-->
+    {{else}}
+        <p>No Members yet.</p>
+    {{/if}}
+
     <form action="/teams/{{team.id}}" method="post">
         <label for="name">Add members</label>
         <input id="name" name="name" type="text">
@@ -19,8 +20,6 @@
 
     <br><br>
     <a href="/teams/{{team.id}}/update">Edit this team</a>
-    <br>
-    <a href="/members/delete">Remove Team Members</a>
     <br>
     <a href="/teams/{{team.id}}/delete">Remove this team</a>
     <br>
